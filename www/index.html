@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>NYCTripPlanner</title>
+	<meta name="description" content="New York City Trip Planner App for Pretty Simple"/>
+	<link rel="stylesheet" href="css/reset.css"  type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/nyc.css" type='text/css'>
+	<script src="js/swfobject.js"></script>
+	<script>
+		var flashvars = {
+		};
+		var params = {
+			menu: "false",
+			width: 800,
+			height: 600,
+			scale: "noScale",
+			allowFullscreen: "true",
+			allowScriptAccess: "always",
+			bgcolor: "",
+			wmode: "direct" // can cause issues with FP settings & webcam 
+		};
+		var attributes = {
+			id:"NYCTripPlanner"
+		};
+		swfobject.embedSWF(
+			"NYCTripPlanner.swf", 
+			"altContent", "800", "600", "12.0.0", 
+			"expressInstall.swf", 
+			flashvars, params, attributes);
+	</script>
+</head>
+<body>
+	<div id="main-wrapper">
+		<div class="centered-block">
+			<div id="altContent">
+				<h1>NYCTripPlanner</h1>
+				<p><a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash player</a></p>
+			</div>
+		</div>
+		<div class="footer centered-block">
+			<p>New York City Trip Planner. Exercice App for Pretty Simple. By Nicolas Bonnefoy.</p>
+			<p><a href="#">Download source code</a> – <a href="#">View explanation of the solution</a></p>
+		</div>
+	</div>
+</body>
+</html>

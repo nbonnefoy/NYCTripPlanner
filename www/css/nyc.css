@@ -1,0 +1,32 @@
+html {
+	background:#f4efe4 url(../assets/background.jpg) no-repeat center 0;
+	background-size: cover;
+}
+body {
+	background:none;
+}
+
+#main-wrapper {
+	margin-top: 30px;
+}
+
+#NYCTripPlanner {
+	border: 1px solid #2C2623;
+}
+
+.centered-block {
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+.footer {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 20px;
+	font-size: 12px;
+	background:rgba(244,239,228,0.9);
+	border: 1px solid #2C2623;
+	padding: 10px 0;
+	margin-top: 10px;
+}

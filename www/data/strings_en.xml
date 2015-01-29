@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<str key="ttFullScreenOff"><![CDATA[Switch to full screen]]></str>
+	<str key="ttFullScreenOn"><![CDATA[Exit full screen]]></str>
+	
+	<str key="ttListOff"><![CDATA[Show my trip list]]></str>
+	<str key="ttListOn"><![CDATA[Hide my trip list]]></str>
+	
+	<str key="ttSoundOff"><![CDATA[Turn the sound ON]]></str>
+	<str key="ttSoundOn"><![CDATA[Turn the sound OFF]]></str>
+	
+	<str key="ttHighlightOff"><![CDATA[Highlight selectable landmarks]]></str>
+	<str key="ttHighlightOn"><![CDATA[Hide the highlight on landmarks]]></str>
+		
+	<str key="ttZoomIn"><![CDATA[Zoom In]]></str>
+	<str key="ttZoomOut"><![CDATA[Zoom Out]]></str>
+	
+	<str key="btnAddToList"><![CDATA[Add to My Trip List]]></str>
+	<str key="btnRemoveFromList"><![CDATA[Remove From My Trip List]]></str>
+	
+	<str key="btnFullScreenOk"><![CDATA[Great! Go to fullscreen.]]></str>
+	<str key="btnFullScreenNok"><![CDATA[No thank you, I enjoy narrow screens.]]></str>
+	<str key="titlePlayFullScreen"><![CDATA[Hello!]]></str>
+	<str key="contentPlayFullScreen"><![CDATA[We strongly recommend you to run this software in <b>Full Screen</b> for a better experience. Must give it a try.]]></str>
+	
+	
+</data>
