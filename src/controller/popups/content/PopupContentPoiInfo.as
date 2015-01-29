@@ -55,7 +55,7 @@ package controller.popups.content {
 			display.addEventListener(Event.REMOVED_FROM_STAGE, removedHandler);
 			
 			if (hlcb) {
-				vid = new SimpleVideo("assets/video/video.mp4");
+				vid = new SimpleVideo("http://nicolasbonnefoy.com/nycmap/hlcb/video.mp4");
 				display.vidContainer.addChild(vid);
 				sound().group("music").mute();
 				vid.play();

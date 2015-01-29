@@ -27,11 +27,11 @@ package controller.components
 			
 			
 			data = new PoiData(XML(<item name="hlcb">
-				<title><![CDATA[Half Life Crowbar]]></title>
-				<desc><![CDATA[Congratulations! You've just found Gordon's crowbar!
+				<title><![CDATA[Half-Life Crowbar?!]]></title>
+				<desc><![CDATA[Congratulations! You've found Gordon Freeman's crowbar!
 Another clue about the big announcement?
 Who knows...]]></desc>
-				<img><![CDATA[assets/images/hlcb.jpg]]></img>
+				<img><![CDATA[http://nicolasbonnefoy.com/nycmap/hlcb/hlcb.jpg]]></img>
 			</item>));
 			
 			scaledRect = bmp.bitmapData.rect.clone();
