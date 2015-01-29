@@ -2,6 +2,7 @@
 bin/
 bin-debug/
 bin-release/
+assets-src/
 
 # Other files and folders
 .settings/
