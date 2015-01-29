@@ -29,8 +29,6 @@ package controller.popups
 		private var content:PopupContentPoiInfo;
 		private var poi:PointOfInterest;
 		
-		public var onValidClick:Signal;
-		
 		//{ region Constructor
 		
 		public function PopupPoiInfo(poi:PointOfInterest) 
@@ -68,13 +66,6 @@ package controller.popups
 		
 		//} endregion
 		
-		//{ region Public
-		
-		public function close(id:*=null):void {
-			popOut();
-		}
-		
-		//} endregion
 		
 		//{ region Private
 		

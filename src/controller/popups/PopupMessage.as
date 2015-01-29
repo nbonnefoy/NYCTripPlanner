@@ -16,20 +16,19 @@ package controller.popups
 	{
 		private var btnClose:BtnBase;
 		private var btnValid:BtnBase;
-		private var btnRefuse:BtnBase;
+		private var btnCancel:BtnBase;
 		private var txtTitle:TextField;
 		private var txtContent:TextField;
 		private var txtContentRect:Rectangle;
 		private var txtTitleRect:Rectangle;
 		
-		public var onValidClick:Signal;
 		public var validated:Boolean = false;
 		public var autoClose:Boolean = false;
 		
 		private var _strTitle:String;
 		private var _strContent:String;
 		private var _strBtnValid:String;
-		private var _strBtnRefuse:String;
+		private var _strBtnCancel:String;
 		
 		//{ region Constructor
 		
@@ -50,8 +49,8 @@ package controller.popups
 			btnClose = new BtnBase(display.btnClose, 0);
 			btnClose.clicked.addOnce(close);
 			
-			btnRefuse = new BtnBase(display.btnRefuse, 1);
-			btnRefuse.clicked.addOnce(close);
+			btnCancel = new BtnBase(display.btnCancel, 1);
+			btnCancel.clicked.addOnce(close);
 			
 			btnValid = new BtnBase(display.btnValid, 2);
 			btnValid.clicked.addOnce(validClickHandler);
@@ -69,15 +68,6 @@ package controller.popups
 		
 		//} endregion
 		
-		//{ region Public
-		
-		public function close(id:*= null):void {
-			validated = false;
-			popOut();
-		}
-		
-		//} endregion
-		
 		//{ region Private
 		
 		private function updateContent():void {
@@ -91,12 +81,12 @@ package controller.popups
 			//TextTools.fitTextIn(txtContent, txtContentRect.width, txtContentRect.height);
 			TextTools.vAlign(txtContent, txtContentRect);
 				
-			if (_strBtnRefuse.length > 1) {
-				btnRefuse.display.visible = true;
-				btnRefuse.label = _strBtnRefuse;
+			if (_strBtnCancel.length > 1) {
+				btnCancel.display.visible = true;
+				btnCancel.label = _strBtnCancel;
 			}else {
-				btnRefuse.display.visible = false;
-				display.background.heigth -= btnRefuse.display.height;
+				btnCancel.display.visible = false;
+				display.background.heigth -= btnCancel.display.height;
 			}
 		}
 		
@@ -127,9 +117,9 @@ package controller.popups
 			_strBtnValid = value;
 		}
 		
-		public function get strBtnRefuse():String { return _strBtnRefuse; }
-		public function set strBtnRefuse(value:String):void {
-			_strBtnRefuse = value;
+		public function get strBtnCancel():String { return _strBtnCancel; }
+		public function set strBtnCancel(value:String):void {
+			_strBtnCancel = value;
 		}
 		
 		//} endregion

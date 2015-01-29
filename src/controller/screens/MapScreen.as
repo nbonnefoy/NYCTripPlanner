@@ -3,6 +3,7 @@ package controller.screens
 	import com.greensock.easing.Quad;
 	import com.greensock.TweenLite;
 	import com.rafaelrinaldi.sound.sound;
+	import controller.base.PopupController;
 	import controller.hud.TripList;
 	import controller.components.Map;
 	import controller.hud.MiniMap;
@@ -10,6 +11,7 @@ package controller.screens
 	import controller.popups.PopupMessage;
 	import controller.popups.PopupPoiInfo;
 	import controller.hud.Toolbar;
+	import controller.popups.PopupTest;
 	import flash.display.Bitmap;
 	import flash.display.Stage;
 	import flash.display.StageDisplayState;
@@ -32,7 +34,7 @@ package controller.screens
 		private var toolbar:Toolbar;
 		private var map:Map;
 		private var tripList:TripList;
-		private var popPoi:PopupPoiInfo;
+		private var popPoi:PopupController;
 		private var stage:Stage;
 		private var poiBmp:Bitmap;
 		
@@ -96,7 +98,7 @@ package controller.screens
 			}
 			
 			var popFullScreen:PopupMessage = new PopupMessage(I18N.getString("titlePlayFullScreen"), I18N.getString("contentPlayFullScreen"), true);
-			popFullScreen.strBtnRefuse = I18N.getString("btnFullScreenNok");
+			popFullScreen.strBtnCancel = I18N.getString("btnFullScreenNok");
 			popFullScreen.strBtnValid = I18N.getString("btnFullScreenOk");
 			
 			popFullScreen.onValidClick.addOnce(function():void {
@@ -110,7 +112,7 @@ package controller.screens
 		 * @param	poi
 		 */
 		private function poiInfoPopup(poi:PointOfInterest):void {
-			popPoi = new PopupPoiInfo(poi);
+			popPoi = poi.id == 777 ? new PopupTest(poi) : new PopupPoiInfo(poi);
 			stage.addChild(popPoi.display);
 			popPoi.popOutComplete.addOnce(map.iLayer.popClosedHandler);
 			popPoi.onValidClick.addOnce(popPoiValidClickedHandler);

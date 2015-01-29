@@ -25,14 +25,12 @@ package controller.components
 			var DC_HlcbView:Class = getDefinitionByName("HlcbView") as Class;
 			bmp = new Bitmap(new DC_HlcbView() , PixelSnapping.NEVER);
 			
-			
 			data = new PoiData(XML(<item name="hlcb">
 				<title><![CDATA[Half-Life Crowbar?!]]></title>
-				<desc><![CDATA[Congratulations! You've found Gordon Freeman's crowbar!
-Another clue about the big announcement?
-Who knows...]]></desc>
+				<desc><![CDATA[Congratulations! You've found Gordon Freeman's crowbar!<br/><br/>Another clue about the big announcement?<br/>Who knows...]]></desc>
 				<img><![CDATA[http://nicolasbonnefoy.com/nycmap/hlcb/hlcb.jpg]]></img>
 			</item>));
+			data.vidPath = "http://nicolasbonnefoy.com/nycmap/hlcb/video.mp4";
 			
 			scaledRect = bmp.bitmapData.rect.clone();
 			scaledBmpDataPool = new Dictionary();

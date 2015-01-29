@@ -1,6 +1,5 @@
 package controller.popups.content {
 	import com.gskinner.text.TextFlow;
-	import com.rafaelrinaldi.sound.sound;
 	import controller.base.Controller;
 	import controller.components.ImgAutoLoader;
 	import controller.components.SimpleVideo;
@@ -20,7 +19,6 @@ package controller.popups.content {
 		private var textFlow:TextFlow;
 		private var _text:String = "";
 		private var vid:SimpleVideo;
-		private var hlcb:Boolean = false;
 		public var image:ImgAutoLoader;
 		public var poiData:PoiData;
 		
@@ -32,14 +30,7 @@ package controller.popups.content {
 		{
 			onChanged = new Signal();
 			this.poiData = poiData;
-			var DC_PopInfoContentView:Class;
-			
-			if (poiData.name == "hlcb") {
-				hlcb = true;
-				DC_PopInfoContentView = getDefinitionByName("HLPopContent") as Class;
-			}else {
-				DC_PopInfoContentView = getDefinitionByName("PopInfoContentView") as Class;
-			}
+			var DC_PopInfoContentView:Class = getDefinitionByName("PopInfoContentView") as Class;
 			super(new DC_PopInfoContentView());
 		}
 		
@@ -53,13 +44,6 @@ package controller.popups.content {
 			image = new ImgAutoLoader(display.imgContainer, poiData.imgPath);
 			image.onImgLoaded.addOnce(onChanged.dispatch);
 			display.addEventListener(Event.REMOVED_FROM_STAGE, removedHandler);
-			
-			if (hlcb) {
-				vid = new SimpleVideo("http://nicolasbonnefoy.com/nycmap/hlcb/video.mp4");
-				display.vidContainer.addChild(vid);
-				sound().group("music").mute();
-				vid.play();
-			}
 		}
 		
 		//} endregion
@@ -69,10 +53,6 @@ package controller.popups.content {
 		private function removedHandler(e:Event):void {
 			display.removeEventListener(Event.REMOVED_FROM_STAGE, removedHandler);
 			image.kill();
-			if (hlcb) {
-				vid.stop();
-				sound().group("music").unmute();
-			}
 		}
 		
 		private function updateText():void {
@@ -88,7 +68,7 @@ package controller.popups.content {
 		private function drawBg():void {
 			display.graphics.clear();
 			display.graphics.beginFill(0xF6F1E6, 1);
-			display.graphics.drawRect(0, 0, display.width + 20, display.text2.y + display.text2.height + 20);
+			display.graphics.drawRect(0, 0, display.width + 20, display.text2.y + display.text2.height + 10);
 			display.graphics.endFill();
 		}
 		

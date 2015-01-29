@@ -19,7 +19,7 @@ package behaviors
 		private var target:DisplayObjectContainer;
 		private var parent:DisplayObjectContainer;
 		
-		private const colorTransform:ColorTransform = new ColorTransform(0.6, 0.6, 0.6, 1);
+		private const colorTransform:ColorTransform = new ColorTransform(0.5, 0.5, 0.5, 1);
 		private const blurFilter:BlurFilter = new BlurFilter(8, 8, 2);
 		
 		//{ region constructor

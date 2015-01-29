@@ -23,6 +23,8 @@ package controller.base
 		public var hasShader:Boolean = false;
 		private var shader:BackroundBlurShader;
 		
+		public var onValidClick:Signal;
+		
 		//{ region Constructor
 		
 		public function PopupController(dsp:MovieClip) 
@@ -44,6 +46,10 @@ package controller.base
 		//} endregion
 		
 		//{ region Public
+		
+		public function close(id:*= null):void {
+			popOut();
+		}
 		
 		public function popIn():void {
 			if (hasShader) {

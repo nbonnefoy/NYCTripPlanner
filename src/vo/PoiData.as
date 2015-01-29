@@ -10,6 +10,7 @@ package vo
 		public var title:String;
 		public var desc:String;
 		public var imgPath:String;
+		public var vidPath:String;
 		
 		/**
 		 * Value Object for POI data (from json)

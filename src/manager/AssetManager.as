@@ -214,6 +214,7 @@ package manager {
 		private function loadSound():void {
 			sound().group("music").add("main").load("assets/music/main_theme.mp3");
 			sound().add("snd_click", "SndClick");
+			sound().add("snd_camClick", "SndCameraClick");
 			sound().add("snd_grow", "SndGrow");
 			sound().add("snd_reduce", "SndReduce");
 			sound().add("snd_slide", "SndSlide");

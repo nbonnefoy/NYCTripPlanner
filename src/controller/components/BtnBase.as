@@ -26,6 +26,7 @@ package controller.components
 		public var down:Signal;
 		public var up:Signal;
 		public var toolTip:IToolTip;
+		public var sndClick:String;
 		
 		private var _id:int;
 		private var _enabled:Boolean = true;
@@ -44,6 +45,7 @@ package controller.components
 			out = new Signal();
 			down = new Signal();
 			up = new Signal();
+			sndClick = "snd_click";
 			super(dsp);
 		}
 		
@@ -131,7 +133,7 @@ package controller.components
 		}
 		
 		protected function clickHandler():void {
-			sound().item("snd_click").play();
+			sound().item(sndClick).play();
 			clicked.dispatch(_id);
 		}
 		
