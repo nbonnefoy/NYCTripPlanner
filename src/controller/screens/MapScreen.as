@@ -154,6 +154,8 @@ package controller.screens
 			poiBmp.bitmapData.applyFilter(poiBmp.bitmapData, poiBmp.bitmapData.rect, poiBmp.bitmapData.rect.topLeft, new GlowFilter(0, 1, 6, 6, 4, 1, true, false));
 			stage.addChild(poiBmp);
 			
+			miniMap.addPoint(map.getRelativeCoord(poi.getScaledCenterPosition()), poi);
+			
 			var ratio:Number = Math.min(toolbar.btnList.display.width/poiBmp.width, toolbar.btnList.display.height/poiBmp.height);
 			var dstPt:Point = toolbar.btnList.display.localToGlobal(new Point(toolbar.btnList.display.width / 2, toolbar.btnList.display.height / 2));
 			TweenLite.to(poiBmp, 0.8, { transformAroundCenter: { x:dstPt.x, y:dstPt.y, scale:ratio }, ease:Quad.easeOut, onComplete:poiSelectedAnimComplete, onCompleteParams:[poi] } );
@@ -169,8 +171,6 @@ package controller.screens
 			stage.removeChild(poiBmp);
 			poiBmp.bitmapData.dispose();
 			poiBmp = null;
-			
-			miniMap.addPoint(map.getRelativeCoord(poi.getScaledCenterPosition()), poi);
 		}
 		
 		//} endregion

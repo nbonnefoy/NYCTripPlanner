@@ -1,6 +1,7 @@
 package controller.hud 
 {
 	import behaviors.DragInput;
+	import com.greensock.TweenLite;
 	import controller.base.Controller;
 	import controller.components.BtnBase;
 	import controller.components.MiniMapPoint;
@@ -31,6 +32,7 @@ package controller.hud
 		private var containerRect:Rectangle; //current view size (stage)
 		private var guizmoDrawRect:Rectangle;
 		private var dragInput:DragInput;
+		private var zoomLocked:Boolean = false;
 		
 		public var onZoomChanged:Signal;
 		public var onDrag:Signal;
@@ -167,6 +169,8 @@ package controller.hud
 		}
 		
 		private function btnZoomClicked(id:int):void {
+			if (zoomLocked) { return };
+			lockZoom();
 			if (id == 0) {
 				setZoom(Math.min(totalZoomLevels - 1, Math.max(0, currentZoomIndex + 1 )));
 			}else {
@@ -175,7 +179,25 @@ package controller.hud
 		}
 		
 		private function radioBtnClickHandler(id:int):void {
+			if (id == currentZoomIndex) {
+				radioBtns[id].selected = true;
+				return;
+			}
+			if (zoomLocked) { return };
+			lockZoom();
 			setZoom(id);
+		}
+		
+		/**
+		 * Ad a delay between zoom btns click to prevent error on zoom animation
+		 */
+		private function lockZoom():void {
+			zoomLocked = true;
+			TweenLite.delayedCall(0.4, unlockZoom);
+		}
+		
+		private function unlockZoom():void {
+			zoomLocked = false;
 		}
 		
 		/**

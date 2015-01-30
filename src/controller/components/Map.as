@@ -29,6 +29,7 @@ package controller.components {
 		private var canvasContainer:Sprite;
 		private var bitmapDrawRect:Rectangle; //rectangle used to copy pixels
 		private var dragInput:DragInput;
+		private var mapTween:TweenLite;
 		
 		public var canvas:Bitmap;
 		public var currentBmpSrc:BitmapData;
@@ -106,7 +107,7 @@ package controller.components {
 			
 			//tween to desired position
 			sound().item("snd_slide").play();
-			TweenLite.to(rect, 0.4, { x:pt.x, y:pt.y, onUpdate:moveToPoiAnimUpdate, onUpdateParams:[rect], ease:Quad.easeOut } );
+			mapTween = TweenLite.to(rect, 0.4, { x:pt.x, y:pt.y, onUpdate:moveToPoiAnimUpdate, onUpdateParams:[rect], ease:Quad.easeOut } );
 		}
 		
 		/**
@@ -132,18 +133,29 @@ package controller.components {
 			iLayer.enabled = false;
 			var scale:Number = zoomPercents[val] / zoomPercents[zoomLevel];
 			var matrix:Matrix = new Matrix(1, 0, 0, 1, 1, 1);
-			TweenLite.to(matrix, 0.4, { a:scale, d:scale, onUpdate:changeZoomAnimUpdate, onUpdateParams:[matrix], onComplete:setZoom, onCompleteParams:[val] } );
+			mapTween = TweenLite.to(matrix, 0.4, { a:scale, d:scale, onUpdate:changeZoomAnimUpdate, onUpdateParams:[matrix], onComplete:setZoom, onCompleteParams:[val] } );
 		}
 		
 		//} endregion
 		
 		//{ region Private
 		
+		private function tweenIsPlaying():Boolean {
+			if (mapTween && mapTween.ratio < 1) {
+				return true;
+			}
+			return false;
+		}
+		
 		/**
 		 * Drag map handler
 		 * @param	translation
 		 */
 		private function dragHandler():void {
+			if (tweenIsPlaying()) {
+				//prevent errors when tween is active
+				return;
+			}
 			iLayer.enabled = false;
 			onViewChanged.dispatch(dragInput.getRatioRect());
 			updateBitmapDrawRect(dragInput.dragRect);
